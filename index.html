@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mattee</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #000;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #fff;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #000;
+}
+.btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #3b82f6;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #e0e0e0;
+    margin: 20px 40px;
+    border-radius: 10px;
+}
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+.hero button {
+    padding: 15px 30px;
+    font-size: 16px;
+    background-color: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.container {
+    display: flex;
+    padding: 0 40px;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.sidebar {
+    width: 250px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    height: fit-content;
+}
+.sidebar input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.filter-group {
+    margin-bottom: 20px;
+}
+.filter-group h4 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+}
+.tags span {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #f0f0f0;
+    border-radius: 15px;
+    font-size: 12px;
+    margin: 0 5px 5px 0;
+}
+.locations label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.salary-inputs {
+    display: flex;
+    gap: 10px;
+}
+.salary-inputs input {
+    width: 50%;
+}
+.jobs-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.card-header .company-logo {
+    width: 20px;
+    height: 20px;
+    background: #ccc;
+    border-radius: 50%;
+}
+.card-header .company-name {
+    font-size: 14px;
+    font-weight: bold;
+}
+.card h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+.card .location {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 20px;
+}
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+.card-footer .salary {
+    font-weight: bold;
+}
+.card-footer .tags span {
+    background: #f0f0f0;
+    padding: 3px 8px;
+    border-radius: 10px;
+    margin-left: 5px;
+}
+footer {
+    background: #e0e0e0;
+    margin: 40px;
+    padding: 40px;
+    border-radius: 10px;
+    position: relative;
+    min-height: 200px;
+}
+.footer-btn {
+    padding: 15px 30px;
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+.footer-links {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+.footer-links a {
+    color: #000;
+    text-decoration: none;
+    font-size: 14px;
+}
+.footer-brand {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.footer-brand .brand-name {
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 1;
+}
+.footer-brand .copyright {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">mattee</div>
+    <nav>
+        <a href="#">Вакансии</a>
+        <a href="#">Работодателям</a>
+    </nav>
+    <button class="btn">Опубликовать</button>
+</header>
+
+<div class="hero">
+    <h1>Больше вакансий<br>в telegram-канале</h1>
+    <button>Перейти в ТГ канал</button>
+</div>
+
+<div class="container">
+    <aside class="sidebar">
+        <input type="text" placeholder="Поиск">
+        <div class="filter-group">
+            <h4>Формат</h4>
+            <div class="tags">
+                <span>Парт-тайм</span>
+                <span>Фулл-тайм</span>
+                <span>Стажировка</span>
+            </div>
+        </div>
+        <div class="filter-group">
+            <h4>Формат</h4>
+            <div class="tags">
+                <span>Офис</span>
+                <span>Удаленно</span>
+                <span>Гибрид</span>
+            </div>
+        </div>
+        <div class="filter-group">
+            <h4>Грейд</h4>
+            <div class="tags">
+                <span>Junior</span>
+                <span>Middle</span>
+                <span>Senior</span>
+                <span>Lead</span>
+                <span>Head</span>
+            </div>
+        </div>
+        <div class="filter-group locations">
+            <h4>Локация</h4>
+            <label><input type="checkbox"> Москва</label>
+            <label><input type="checkbox"> Санкт-Петербург</label>
+            <label><input type="checkbox"> Казань</label>
+            <label><input type="checkbox"> Нижний Новгород</label>
+        </div>
+        <div class="filter-group">
+            <h4>Зарплата</h4>
+            <div class="salary-inputs">
+                <input type="text" placeholder="Минимум">
+                <input type="text" placeholder="Максимум">
+            </div>
+        </div>
+    </aside>
+
+    <main class="jobs-grid">
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <div class="company-logo"></div>
+                    <span class="company-name">Т-Банк</span>
+                </div>
+                <h3>Художник концепт-арта</h3>
+                <div class="location">Москва, формат работы</div>
+            </div>
+            <div class="card-footer">
+                <span class="salary">280 000 ₽</span>
+                <div class="tags"><span>Фулл-тайм</span></div>
+            </div>
+            <div style="font-size:12px; margin-top:10px;">Junior</div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <div class="company-logo"></div>
+                    <span class="company-name">Т-Банк</span>
+                </div>
+                <h3>Художник концепт-арта</h3>
+                <div class="location">Москва, формат работы</div>
+            </div>
+            <div class="card-footer">
+                <span class="salary">280 000 ₽</span>
+                <div class="tags"><span>Фулл-тайм</span></div>
+            </div>
+            <div style="font-size:12px; margin-top:10px;">Junior</div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <div class="company-logo"></div>
+                    <span class="company-name">Т-Банк</span>
+                </div>
+                <h3>Художник концепт-арта</h3>
+                <div class="location">Москва, формат работы</div>
+            </div>
+            <div class="card-footer">
+                <span class="salary">280 000 ₽</span>
+                <div class="tags"><span>Фулл-тайм</span></div>
+            </div>
+            <div style="font-size:12px; margin-top:10px;">Junior</div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <div class="company-logo"></div>
+                    <span class="company-name">Т-Банк</span>
+                </div>
+                <h3>Художник концепт-арта</h3>
+                <div class="location">Москва, формат работы</div>
+            </div>
+            <div class="card-footer">
+                <span class="salary">280 000 ₽</span>
+                <div class="tags"><span>Фулл-тайм</span></div>
+            </div>
+            <div style="font-size:12px; margin-top:10px;">Junior</div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <div class="company-logo"></div>
+                    <span class="company-name">Т-Банк</span>
+                </div>
+                <h3>Художник концепт-арта</h3>
+                <div class="location">Москва, формат работы</div>
+            </div>
+            <div class="card-footer">
+                <span class="salary">280 000 ₽</span>
+                <div class="tags"><span>Фулл-тайм</span></div>
+            </div>
+            <div style="font-size:12px; margin-top:10px;">Junior</div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <div class="company-logo"></div>
+                    <span class="company-name">Т-Банк</span>
+                </div>
+                <h3>Художник концепт-арта</h3>
+                <div class="location">Москва, формат работы</div>
+            </div>
+            <div class="card-footer">
+                <span class="salary">280 000 ₽</span>
+                <div class="tags"><span>Фулл-тайм</span></div>
+            </div>
+            <div style="font-size:12px; margin-top:10px;">Junior</div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <div class="company-logo"></div>
+                    <span class="company-name">Т-Банк</span>
+                </div>
+                <h3>Художник концепт-арта</h3>
+                <div class="location">Москва, формат работы</div>
+            </div>
+            <div class="card-footer">
+                <span class="salary">280 000 ₽</span>
+                <div class="tags"><span>Фулл-тайм</span></div>
+            </div>
+            <div style="font-size:12px; margin-top:10px;">Junior</div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <div class="company-logo"></div>
+                    <span class="company-name">Т-Банк</span>
+                </div>
+                <h3>Художник концепт-арта</h3>
+                <div class="location">Москва, формат работы</div>
+            </div>
+            <div class="card-footer">
+                <span class="salary">280 000 ₽</span>
+                <div class="tags"><span>Фулл-тайм</span></div>
+            </div>
+            <div style="font-size:12px; margin-top:10px;">Junior</div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <div class="company-logo"></div>
+                    <span class="company-name">Т-Банк</span>
+                </div>
+                <h3>Художник концепт-арта</h3>
+                <div class="location">Москва, формат работы</div>
+            </div>
+            <div class="card-footer">
+                <span class="salary">280 000 ₽</span>
+                <div class="tags"><span>Фулл-тайм</span></div>
+            </div>
+            <div style="font-size:12px; margin-top:10px;">Junior</div>
+        </div>
+    </main>
+</div>
+
+<footer>
+    <button class="footer-btn">Опубликовать вакансию</button>
+    <div class="footer-links">
+        <a href="#">Вакансии</a>
+        <a href="#">Работодателям</a>
+        <a href="#">Telegram</a>
+        <a href="#">Техподдержка</a>
+    </div>
+    <div class="footer-brand">
+        <div class="brand-name">mattee</div>
+        <div class="copyright">© 2025</div>
+    </div>
+</footer>
+
+</body>
+</html>
+```
